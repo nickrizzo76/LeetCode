@@ -39,3 +39,16 @@ var twoSum = function(nums, target) {
         }
     }
 };
+
+// Attempt 3
+var twoSum = function(nums, target) {
+    const dict = {}
+    
+    for(let i = 0; i < nums.length; i++) { 
+        const difference = target - nums[i];
+        if(dict[difference] !== undefined) {
+            return [dict[difference], i]
+        }
+        dict[nums[i]] = i;
+    }
+};
