@@ -4,7 +4,7 @@
   *
 /
 
-// Attempt 1: naive solution
+// Attempt 1: Brute Force
 var twoSum = function(nums, target) {
     for(let i = 0; i < nums.length; i++) {
         for(let j = i+1; j < nums.length; j++) {
@@ -15,7 +15,7 @@ var twoSum = function(nums, target) {
     }
 };
 
-// Attempt 2: solve with dictionary - still inefficient (has roughly the same performance as Attempt 1)
+// Attempt 2: Two Passes.  One to build the dictionary. Another to check for number-complement pairs
 var twoSum = function(nums, target) {
     const dict = {}
     nums.forEach((num, index) => {
@@ -40,7 +40,7 @@ var twoSum = function(nums, target) {
     }
 };
 
-// Attempt 3
+// Attempt 3: One-pass Dictionary
 var twoSum = function(nums, target) {
     const dict = {}
     
