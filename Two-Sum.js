@@ -40,7 +40,7 @@ var twoSum = function(nums, target) {
     }
 };
 
-// Attempt 3: One-pass Dictionary
+// Attempt 3* [Optimal Solution]: One-pass Dictionary
 var twoSum = function(nums, target) {
     const dict = {}
     
@@ -49,6 +49,29 @@ var twoSum = function(nums, target) {
         if(dict[difference] !== undefined) {
             return [dict[difference], i]
         }
+        dict[nums[i]] = i;
+    }
+};
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+  ///////////////////////////////////////////////////////////////////
+ ///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
+
+// Revisited
+var twoSum = function(nums, target) {
+    const dict = {}
+    
+    for(let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if(dict[complement] !== undefined) {
+            return [dict[complement], i]
+        }
+        
         dict[nums[i]] = i;
     }
 };
