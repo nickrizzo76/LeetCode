@@ -1,1 +1,21 @@
+ORIGIN: LeetCode
+NAME:   Two-Sum
+DESCRIPTION: Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+
+INPUT: nums = [2,7,11,15], target = 9
+OUTPUT: [0,1]
+EXPLANATION: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SOLUTION: 
+  There are a few important components to the problem to note and one question to ask.  The important components are the following: it is given that there is exactly one solution, you can't use the same element twice to form the Target sum, and that the Output value is an array of two indexes indicating the position of two numbers in the Input array whose sum is equal to the Target.
+  
+The algorithmic trick here is 4 parts: use a dictionary, calculate the complement of the target from the current number, return from the loop early when   we find the values that satisfy the condition, avoid dictionary key collisions from redundant numbers in the num array. 
+  Part 1: Map the Input array to a dictionary (a JavaScript object) where the number is the key and the value is the number's index in the Input array.
+  Part 2: While we're in the for loop that is building/mapping the dictionary, we calculate the complement value by subtracting the current number from               the Target number const `complement = (target - nums[i])`.  We can then lookup the complement in the dictionary to see if the dictionary (so               far) contains the complement that would satisfy the condition.  Return the index of the complement and the current index if the condition is               satisfied.
+  Part 3: Because we're checking the dictionary in each loop, as we're inserting key value pairs into, we don't have to iterate through the Input nums               array. We can return immediately from the for loop, abonding the dictionary, once we find the satisfying condition.
+  Part 4: Because we only need one pair of numbers that satisfies the condition, we avoid a situation where we have to deal with duplicate keys with                 unique indexes.  We return immediately from the for loop with the current index and the index of the value stored in the dictionary.  We never             save the duplicate value in the dictionary.
 
