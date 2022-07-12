@@ -11,7 +11,7 @@
  * @return {ListNode}
  */
 
-// Solution
+// Attempt 1: [Valid Solution]
 var addTwoNumbers = function(l1, l2) {
     let l1Node = l1;
     let l2Node = l2;
@@ -47,4 +47,30 @@ var addTwoNumbers = function(l1, l2) {
     }
     
     return head
+};
+
+// Attempt 2: [Refined Solution]
+var addTwoNumbers = function(l1, l2) {    
+    let head = new ListNode(0);
+    let currentNode = head;
+    let carry = 0;
+    
+    while(l1 || l2 || carry !== 0) {
+        let sum = ( l1 ? l1.val : 0) + ( l2 ? l2.val : 0 ) + carry
+        
+        if(sum > 9) {
+            carry = 1;
+            sum -= 10;
+        } else {
+            carry = 0;
+        }
+        
+        const newNode = new ListNode(sum)
+        currentNode.next = newNode;
+        currentNode = newNode;
+        l1 = l1 ? l1.next : null;
+        l2 = l2 ? l2.next : null;
+    }
+    
+    return head.next
 };
