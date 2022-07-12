@@ -1,0 +1,16 @@
+========= WRITEUP IN PROGRESS =========
+
+ORIGIN: LeetCode
+NAME:   Longest Substring Without Repeating Characters
+DESCRIPTION: Given a string s, find the length of the longest substring without repeating characters.
+
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SOLUTION: 
+Once again, we're avoiding the naive n³ approach.
+
+The solution I came up with is what I later found out to be called the 'Sliding Window Opmitized' solution.  The core of which works by mapping the characters to a dictionary (JS Object) with each letter's value being its index in the string.
