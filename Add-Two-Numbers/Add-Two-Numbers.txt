@@ -1,0 +1,20 @@
+ORIGIN: LeetCode
+NAME:   Add-Two-Numbers
+DESCRIPTION: You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+INPUT: l1 = [2,4,3], l2 = [5,6,4]
+OUTPUT: [7,0,8]
+EXPLANATION: 342 + 465 = 807.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SOLUTION: 
+There are a few ways to go about solving this problem.  
+My initial, naive solution was: linked list -> array of characters -> *reverse the array* -> cast to string -> cast to number -> *sum the numbers generated from both linked lists -> cast to string -> split string into array of characters -> iterate through each and build new linked lists
+
+...Okay.  Clearly a terrible solution.  Tons of converting and casting going on.  Tons of temp variables needed.  Needless iteration through arrays.  And the cherry on top is that for some test cases, the numbers are so big that they are represented in scientific notation, which doesn't work when you try to convert from the final sum all the way back to a linked list.
+
+I realized that all that wasn't necessary (after confronted with the fact that it wasn't all that viable).  A key insight I had was that the problem gives us the numbers in reverse order (reverse endian?).  The lowest magnitude digit was on the left instead of the right.  I can traverse each linked list and add the numbers together as I go, creating a new linked list in my wake with the summed digits.  The output linked list nodes can only hold a single digit value, so I had to handle sums over 9 with a carry digit.
+
+The sticking point in this solution was figuring out how to keep a reference of the head node while also building the linked list off of it.  I needed to make a head node with a current node pointing to the head node.  The head node variable kept a reference, so I could return it at the end as my output.  The current node initialed to the head node allowed me to dynamically set the current node's next node property while in the loop.  The first iteration in the loop would be setting the head node's next property because the current node IS the head node in the first iteration of the loop.
