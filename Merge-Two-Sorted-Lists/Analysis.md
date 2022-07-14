@@ -1,9 +1,13 @@
-Input: list1 = [1,2,4], list2 = [1,3,4] <br />
-Output: [1,1,2,3,4,4]
+# **Problem Information**<br />
+Name: Merge Two Sorted Lists
+Origin: [LeetCode](https://leetcode.com/problems/merge-two-sorted-lists/)<br />
+Input: list1 = [1,2,4], list2 = [1,3,4]<br />
+Output: [1,1,2,3,4,4]<br />
 
 ![Problem Illustration](https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg)
 
-// SOLUTION 3 (Optimal Iterative)
+# **Solution**<br />
+### Optimal Iterative
 ```
 /**
  * Definition for singly-linked list.
@@ -44,7 +48,7 @@ var mergeTwoLists = function(list1, list2) {
 };
 ```
 
-*Takeaways and Lessons Learned*
+# **Takeaways and Lessons Learned**<br />
 I made the mistake of operating on the linked list values instead of the nodes themselves causing unessecary code and logic. I didn't leverage an important aspect of linked lists, which is that once you have references to the nodes you want, you can cheaply 'graft' the linked lists. E.g.:
 
 l1: a => b => [c] => d => e<br />
