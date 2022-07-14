@@ -10,6 +10,8 @@
  * @param {ListNode} list2
  * @return {ListNode}
  */
+
+// SOLUTION 1
 var mergeTwoLists = function(list1, list2) {
     const dummyHead = new ListNode(0);
     let currentNode = dummyHead;
@@ -34,5 +36,33 @@ var mergeTwoLists = function(list1, list2) {
         currentNode = currentNode.next
         remainingList = remainingList.next
     }
+    return dummyHead.next
+};
+
+// SOLUTION 2
+var mergeTwoLists = function(list1, list2) {
+    const dummyHead = new ListNode(0);
+    let currentNode = dummyHead;
+    
+    while(list1 !== null || list2 !== null) {
+        let val = null;
+        if(list1 === null) {
+            val = list2.val
+            list2 = list2.next
+        } else if(list2 === null) {
+            val = list1.val
+            list1 = list1.next
+        } else if(list1.val < list2.val) {
+            val = list1.val
+            list1 = list1.next
+        } else {  // list1.val > list2.val
+            val = list2.val
+            list2 = list2.next
+        }
+        
+        currentNode.next = new ListNode(val)
+        currentNode = currentNode.next
+    }
+    
     return dummyHead.next
 };
