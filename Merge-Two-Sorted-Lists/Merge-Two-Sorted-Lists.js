@@ -66,3 +66,24 @@ var mergeTwoLists = function(list1, list2) {
     
     return dummyHead.next
 };
+
+// SOLUTION 3 (Optimal Iterative)
+var mergeTwoLists = function(list1, list2) {
+    const dummyHead = new ListNode(-1);
+    let previousNode = dummyHead;
+    
+    while(list1 !== null && list2 !== null) {
+        if(list1.val <= list2.val) {
+            previousNode.next = list1;
+            list1 = list1.next;
+        } else {
+            previousNode.next = list2;
+            list2 = list2.next;
+        }
+        previousNode = previousNode.next;
+    }
+    
+    previousNode.next = list1 ? list1 : list2;
+    
+    return dummyHead.next
+};
