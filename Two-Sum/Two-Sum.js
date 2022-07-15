@@ -75,3 +75,16 @@ var twoSum = function(nums, target) {
         dict[nums[i]] = i;
     }
 };
+
+// Refined Further - 'x in object'
+var twoSum = function(nums, target) {
+    const dict = {}
+    for(let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if(complement in dict) {
+            return [dict[complement], i]
+        }
+        
+        dict[nums[i]] = i;
+    }
+};
