@@ -25,6 +25,7 @@ var majorityElement = function(nums) {
 };
 
 // Boyer-Moore Voting Algorithm
+// O(n) Time + O(1) Space Complexity
 // first try from memory of how the algorithm works
 let maxElement = nums[0];
     let count = 1;
