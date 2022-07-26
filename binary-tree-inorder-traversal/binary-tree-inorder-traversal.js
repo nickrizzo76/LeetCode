@@ -11,7 +11,7 @@
  * @return {number[]}
  */
 
-// In order traversal = left, current node, right
+// In order traversal = left, root, right
 
 // Note: the function inputs were modified to include 'order = []'
 var inorderTraversal = function(root, order = []) {
