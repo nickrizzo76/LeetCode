@@ -66,3 +66,48 @@ function negateList(nodeA) {
     
     return head;
 }
+
+
+// Solution: An intersection existing between two linked lists implies that their tails are the same length. From this fact, we can 'sync' up the starting place of the longer list with the short list and then compare each pair of nodes in lockstep. 
+// E.g. a => b => c => d => e => f
+//           g => h => ^
+// in this example, the two linked lists are [a, b, c, d, e, f] and [g, h, d, e, f] with an intersection at d;
+// The solution then is to advance the first linked list by the difference of their lengths.
+// The difference is 1 so we advance the first linked list 1 time, so that its head points at b.
+// [b, c, d, e, f] and [g, h, d, e, f]
+// comparing each pair of nodes, the algorithm will return d as the intersection node
+var getIntersectionNode = function(headA, headB) {
+    const aLength = findListLength(headA);
+    const bLength = findListLength(headB);
+    const lengthDiff = Math.abs(aLength - bLength)
+    if(aLength > bLength) {
+        headA = advanceListNode(headA, lengthDiff)
+    } else {
+        headB = advanceListNode(headB, lengthDiff)
+    }
+    
+    while(headA) {
+        if(headA === headB) return headA
+        headA = headA.next;
+        headB = headB.next;
+    }
+    
+    return null;
+    
+};
+
+function findListLength(head) {
+    let count = 0;
+    while(head) {
+        count++;
+        head = head.next;
+    }
+    return count;
+}
+
+function advanceListNode(head, n) {
+    for(let i = 0; i < n; i++) {
+            head = head.next;
+    }
+    return head;
+}
