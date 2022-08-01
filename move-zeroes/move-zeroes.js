@@ -34,3 +34,39 @@ var moveZeroes = function(nums) {
     
     return nums;
 };
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function(nums) {
+    let zeroCount = 0;
+    // find index of first occuring 0
+    let i = nums.findIndex(num => num === 0);
+    
+    if(i >= 0) {
+        zeroCount = 1;
+        let j = i + 1; // j iterates through the rest of the array looking for a non-zero number to assign to position i
+        while(j < nums.length) {
+            if(nums[j] === 0) {
+                // increment the number of zeroes that need to be assigned to the end of the array
+                zeroCount++;
+            } else {
+                // assign the first non-zero number to position i, which was previously a 0
+                nums[i] = nums[j]
+                i++;
+            }
+            j++;
+        }
+        
+        for(let i = nums.length - 1; i >= nums.length - zeroCount; i--) {
+            nums[i] = 0;
+        }
+    }
+    
+    return nums;
+};
