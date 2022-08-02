@@ -2,6 +2,8 @@
  * @param {number} x
  * @return {boolean}
  */
+
+// Solution: Converting to String
 var isPalindrome = function(x) {
     const numArray = x.toString().split('');
     
@@ -16,3 +18,5 @@ var isPalindrome = function(x) {
     
     return true;
 };
+
+// Solution: (do without string conversion)
